@@ -1,13 +1,15 @@
 from rich.console import Console
 from rich.panel import Panel
 from rich.prompt import Prompt, Confirm
-
+import logging
 import config
 from ChromaDB import ChromaDBManager
 from scraper_agent import ScraperAgent
 from writer_agent import WriterAgent
 from reviewer_agent import ReviewerAgent
 import voice_interface
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 console = Console()
 
