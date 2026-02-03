@@ -2,7 +2,10 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY") 
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY not found in environment variables. Please set it in .env file.")
+
 GEMINI_MODEL = "gemini-1.5-flash"
 
 TARGET_URL = "https://en.wikisource.org/wiki/The_Gates_of_Morning/Book_1/Chapter_1"
@@ -30,9 +33,9 @@ REWARD_WEIGHTS = {
 # Keywords to look for in the scraped text.
 REWARD_KEYWORDS = ["chapter", "morning", "gates", "book"]
 
-# Words that are considered "noise" and indicate a poor scrape
+# Words that are considered "noise" and indicate a poor scrape"
 NOISE_WORDS = ["menu", "search", "login", "portal", "navigation", "edit"]
 
 # The minimum acceptable reward score. If a scrape's score falls below
 # this threshold, the system will flag it as potentially low quality.
-REWARD_THRESHOLD = 70.0 
+REWARD_THRESHOLD = 70.0
